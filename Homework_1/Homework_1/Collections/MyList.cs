@@ -17,18 +17,16 @@ public class MyList
     }
 
     private void Resize()
-    {
-        if (_count == _capacity)
-        {
-            _capacity *= 2;
-            int[] newItems = new int[_capacity];
+    { 
+        _capacity *= 2;
+        int[] newItems = new int[_capacity];
 
-            for (int i = 0; i < _count; i++)
-            {
+        for (int i = 0; i < _count; i++)
+        {
                 newItems[i] = _items[i];
-            }
-            _items = newItems;
         }
+
+        _items = newItems;
     }
 
     public void Add(int item)
