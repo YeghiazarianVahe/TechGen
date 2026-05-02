@@ -1,6 +1,6 @@
-﻿using Homework_1.FloatingPoint;
-using Homework_1.BigNumbers;
-using Homework_1.MyList;
+﻿using floatPoint = Homework_1.FloatingPoint.FloatingPointBinaryConverter;
+using bigNumbers = Homework_1.BigNumbers.BigNumberMath;
+using customList = Homework_1.MyList.MyList;
 
 namespace Homework_1
 {
@@ -11,25 +11,45 @@ namespace Homework_1
             Converter();
             BigNumber();
             MyListDemo();
+            
+            Console.WriteLine();
+            Console.WriteLine("All tasks finished.");
         }
         
 
-        // Task 1
+        //  /====================================================\
+        //  /=========== CONSOLE HELPER FUNCTIONS ===============\
+        //  /====================================================\
+        
+        private static void RunNewTask(string section)
+        {
+            Console.WriteLine("****************************************");
+            Console.WriteLine($"*****   {section}      *****");
+            Console.WriteLine("****************************************");
+            Console.WriteLine();
+        }
+
+        private static void EndTask()
+        {
+            Console.WriteLine("****************************************");
+            Console.WriteLine("********** Task completed! *************");
+            Console.WriteLine("****************************************");
+        }
+        
+        //  /====================================================\
+        //  /==================== TASK 1 ========================\
+        //  /====================================================\
         private static void Converter()
         {
-            PrintHeader();
+            RunNewTask("Testing IEEE 754  Floating Point Binary Converter");
             RunFloatExample();
             RunDoubleExample();
             RunSpecialValues();
             RunManualInput();
+            EndTask();
         }
 
-        private static void PrintHeader()
-        {
-            Console.WriteLine("IEEE 754 Floating Point Binary Converter");
-            Console.WriteLine("-----------------------------");
-            Console.WriteLine();
-        }
+
 
         private static void RunFloatExample()
         {
@@ -39,11 +59,11 @@ namespace Homework_1
             float value1 = 12.5f;
             float value2 = -3.14f;
 
-            string binary1 = FloatingPointBinaryConverter.FloatToBinary(value1);
-            string formattedBinary1 = FloatingPointBinaryConverter.FloatToBinary(value1, true);
+            string binary1 = floatPoint.FloatToBinary(value1);
+            string formattedBinary1 = floatPoint.FloatToBinary(value1, true);
             
-            string binary2 = FloatingPointBinaryConverter.FloatToBinary(value2);
-            string formattedBinary2 = FloatingPointBinaryConverter.FloatToBinary(value2, true);
+            string binary2 = floatPoint.FloatToBinary(value2);
+            string formattedBinary2 = floatPoint.FloatToBinary(value2, true);
             
             Console.WriteLine($"Float value1: {value1}");
             Console.WriteLine($"Binary value1: {binary1}");
@@ -58,8 +78,8 @@ namespace Homework_1
             Console.WriteLine("Binary to Float");
             Console.WriteLine("-------------------");
 
-            float restoredValue1 = FloatingPointBinaryConverter.BinaryToFloat(binary1);
-            float restoredValue2 = FloatingPointBinaryConverter.BinaryToFloat(binary2);
+            float restoredValue1 = floatPoint.BinaryToFloat(binary1);
+            float restoredValue2 = floatPoint.BinaryToFloat(binary2);
             
             Console.WriteLine($"Float value1: {restoredValue1}");
             Console.WriteLine($"Float value2: {restoredValue2}");
@@ -74,11 +94,11 @@ namespace Homework_1
             double value1 = 16.2547;
             double value2 = -3.14;
 
-            string binary1 = FloatingPointBinaryConverter.DoubleToBinary(value1);
-            string formattedBinary1 = FloatingPointBinaryConverter.DoubleToBinary(value1, true);
+            string binary1 = floatPoint.DoubleToBinary(value1);
+            string formattedBinary1 = floatPoint.DoubleToBinary(value1, true);
             
-            string binary2 = FloatingPointBinaryConverter.DoubleToBinary(value2);
-            string formattedBinary2 = FloatingPointBinaryConverter.DoubleToBinary(value2, true);
+            string binary2 = floatPoint.DoubleToBinary(value2);
+            string formattedBinary2 = floatPoint.DoubleToBinary(value2, true);
             
             Console.WriteLine($"Double value1: {value1}");
             Console.WriteLine($"Binary value1: {binary1}");
@@ -93,8 +113,8 @@ namespace Homework_1
             Console.WriteLine("Binary to Double");
             Console.WriteLine("-------------------");
 
-            double restoredValue1 = FloatingPointBinaryConverter.BinaryToDouble(binary1);
-            double restoredValue2 = FloatingPointBinaryConverter.BinaryToDouble(binary2);
+            double restoredValue1 = floatPoint.BinaryToDouble(binary1);
+            double restoredValue2 = floatPoint.BinaryToDouble(binary2);
             
             Console.WriteLine($"Double value1: {restoredValue1}");
             Console.WriteLine($"Double value2: {restoredValue2}");
@@ -112,11 +132,11 @@ namespace Homework_1
             float negativeInfinity = float.NegativeInfinity;
             float notANumber = float.NaN;
 
-            Console.WriteLine($"+0.0f:       {FloatingPointBinaryConverter.FloatToBinary(positiveZero, formatting: true)}");
-            Console.WriteLine($"-0.0f:       {FloatingPointBinaryConverter.FloatToBinary(negativeZero, formatting: true)}");
-            Console.WriteLine($"+Infinity:  {FloatingPointBinaryConverter.FloatToBinary(positiveInfinity, formatting: true)}");
-            Console.WriteLine($"-Infinity:  {FloatingPointBinaryConverter.FloatToBinary(negativeInfinity, formatting: true)}");
-            Console.WriteLine($"NaN:        {FloatingPointBinaryConverter.FloatToBinary(notANumber, formatting: true)}");
+            Console.WriteLine($"+0.0f:      {floatPoint.FloatToBinary(positiveZero, formatting: true)}");
+            Console.WriteLine($"-0.0f:      {floatPoint.FloatToBinary(negativeZero, formatting: true)}");
+            Console.WriteLine($"+Infinity:  {floatPoint.FloatToBinary(positiveInfinity, formatting: true)}");
+            Console.WriteLine($"-Infinity:  {floatPoint.FloatToBinary(negativeInfinity, formatting: true)}");
+            Console.WriteLine($"NaN:        {floatPoint.FloatToBinary(notANumber, formatting: true)}");
             Console.WriteLine();
         }
 
@@ -127,76 +147,71 @@ namespace Homework_1
 
             string binary = "0 | 10000010 | 10010000000000000000000";
 
-            float value = FloatingPointBinaryConverter.BinaryToFloat(binary);
+            float value = floatPoint.BinaryToFloat(binary);
 
             Console.WriteLine($"Input binary: {binary}");
             Console.WriteLine($"Float value:  {value}");
             Console.WriteLine();
         }
-
-        private static void PrintFooter()
-        {
-            Console.WriteLine();
-            Console.WriteLine("------------------------------");
-            Console.WriteLine("End of IEEE754 Converter");
-        }
         
-        // Task 2
+        //  /====================================================\
+        //  /==================== TASK 2 ========================\
+        //  /====================================================\
 
         private static void BigNumber()
         {
-            Console.WriteLine("Big Number");
-            Console.WriteLine("------------------------------");
-            Console.WriteLine();
-            
-            BigNumberMath.Print();
-            Console.WriteLine("End of Big Number");
-            Console.WriteLine("------------------------------");
-            Console.WriteLine();
+            RunNewTask("Big Numbers");
+            bigNumbers.Print();
+            EndTask();
         }
         
-        // Task 3
+        //  /====================================================\
+        //  /==================== TASK 3 ========================\
+        //  /====================================================\
 
         private static void MyListDemo()
         {
-            Console.WriteLine("My List");
-            Console.WriteLine("------------------------------");
-            Console.WriteLine();
-            
-            MyList.MyList list = new MyList.MyList();
-            Console.WriteLine("Add items");
-            list.Add(1);
-            list.Add(2);
-            list.Add(3);
-            Console.WriteLine($"Items count after add: {list.Count}");
-            
-            Console.WriteLine("Add range");
-            int[] newElems = { 10, 20, 30 };
-            list.AddRange(newElems);
-            Console.WriteLine($"Items count after update: {list.Count}");
-            
-            Console.WriteLine("TryGet");
-            if (list.TryGet(2, out int value))
+            RunNewTask("My List Demo");
+    
+            customList list = new customList();
+            Console.WriteLine($"Initial list size is: {list.Count}");
+    
+            Console.WriteLine("\n--- Adding items ---");
+            for (int i = 0; i < 10; ++i)
             {
-                Console.WriteLine($"Item with 2 index is: {value}");
+                list.Add(i);
             }
-
-            if (!list.TryGet(10, out int invalidValue))
-            {
-                Console.WriteLine("There are no item with 10 index!");
-            }
-
-            Console.WriteLine("IndexOf");
-            int index = list.IndexOf(20);
-            Console.WriteLine($"Index of item with value 20 is: {index}");
             
-            Console.WriteLine("Remove");
-            bool isRemoved = list.Remove(20);
-            Console.WriteLine($"Item with 20 index is: {isRemoved}. New list item count is: {list.Count}");
-            
-            
-            Console.WriteLine("Print list");
             list.Print();
+            Console.WriteLine($"List size after additions: {list.Count}");
+    
+            Console.WriteLine("\n--- Removing items ---");
+            bool removedFive = list.Remove(5);
+            Console.WriteLine($"Removed item '5': {removedFive}");
+    
+            bool removedNinetyNine = list.Remove(99);
+            Console.WriteLine($"Removed item '99': {removedNinetyNine}");
+    
+            list.Print();
+            Console.WriteLine($"List size after removals is: {list.Count}");
+
+            Console.WriteLine("\n--- Testing Search & Retrieval ---");
+            Console.WriteLine($"List contains '7': {list.Contains(7)}");
+            Console.WriteLine($"Index of item '8': {list.IndexOf(8)}");
+
+            if (list.TryGet(3, out int val))
+            {
+                Console.WriteLine($"Successfully retrieved value at index 3: {val}");
+            }
+            else
+            {
+                Console.WriteLine("Failed to retrieve value at index 3 (Out of bounds).");
+            }
+
+            Console.WriteLine("\n--- Clearing the list ---");
+            list.Clear();
+            Console.WriteLine($"List size after Clear(): {list.Count}");
+            EndTask();
         }
     }
 }
