@@ -1,6 +1,6 @@
 ﻿using floatPoint = Homework_1.FloatingPoint.FloatingPointBinaryConverter;
 using bigNumbers = Homework_1.BigNumbers.BigNumberMath;
-using customList = Homework_1.MyList.MyList;
+using customList = Homework_1.Collections.MyList;
 
 namespace Homework_1
 {

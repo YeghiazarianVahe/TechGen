@@ -1,4 +1,4 @@
-﻿namespace Homework_1.MyList;
+﻿namespace Homework_1.Collections;
 
 public class MyList
 {
@@ -13,7 +13,7 @@ public class MyList
 
     public int Count
     {
-        get { return _count; }
+        get =>  _count;
     }
 
     private void Resize()
