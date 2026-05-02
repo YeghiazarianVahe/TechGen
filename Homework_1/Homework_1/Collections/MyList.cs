@@ -85,6 +85,39 @@ public class MyList
         return -1;
     }
 
+    public bool Contains(int item)
+    {
+        return IndexOf(item) != -1;
+    }
+
+    public void Clear()
+    {
+        _count = 0;
+    }
+
+    public int this[int index]
+    {
+        get
+        {
+            if (index < 0 || index >= _count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), "Index out of range.");
+            }
+
+            return _items[index];
+        }
+
+        set
+        {
+            if (index < 0 || index >= _count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), "Index out of range.");
+            }
+
+            _items[index] = value;
+        }
+    }
+
     public void Print()
     {
         for (int i = 0; i < Count; i++)
