@@ -1,10 +1,8 @@
-﻿
-using System;
-using System.Text;
+﻿using System.Text;
 
 namespace Homework_1.BigNumbers
 {
-    public class BigNumberMath
+    class BigNumberMath
     {
         public static void Print()
         {
