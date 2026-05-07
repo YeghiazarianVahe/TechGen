@@ -1,6 +1,7 @@
 ﻿using floatPoint = Homework_1.FloatingPoint.FloatingPointBinaryConverter;
 using bigNumbers = Homework_1.BigNumbers.BigNumberMath;
 using customList = Homework_1.Collections.MyList;
+using pureFloat = Homework_1.FloatingPoint.Ieee754Converter;
 
 namespace Homework_1
 {
@@ -8,11 +9,19 @@ namespace Homework_1
     {
         public static void Main(string[] args)
         {
-            Converter();
-            BigNumber();
-            MyListDemo();
-            
+            // Converter();
+            // BigNumber();
+            // MyListDemo();
+
+            int[] bits = pureFloat.FloatToIeee754(3.14f);
+
+            for (int i = 0; i < 32; i++)
+            {
+                Console.Write(bits[i] + " ");
+            }
             Console.WriteLine();
+            float num = pureFloat.Ieee754ToFloat(bits);
+            Console.WriteLine(num);
             Console.WriteLine("All tasks finished.");
         }
         
@@ -34,6 +43,7 @@ namespace Homework_1
             Console.WriteLine("****************************************");
             Console.WriteLine("********** Task completed! *************");
             Console.WriteLine("****************************************");
+            Console.WriteLine();
         }
         
         //  /====================================================\
@@ -41,7 +51,7 @@ namespace Homework_1
         //  /====================================================\
         private static void Converter()
         {
-            RunNewTask("Testing IEEE 754  Floating Point Binary Converter");
+            RunNewTask("Float to Binary");
             RunFloatExample();
             RunDoubleExample();
             RunSpecialValues();

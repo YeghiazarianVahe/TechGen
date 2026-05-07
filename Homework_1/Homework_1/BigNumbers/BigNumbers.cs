@@ -16,7 +16,8 @@ namespace Homework_1.BigNumbers
             Console.WriteLine("-----------------------------");
 
 
-            Console.WriteLine($"Add: {Add("-9999", "1")}");            
+            Console.WriteLine($"Add: {Add("123456789999999999999999", "1")}");            
+            Console.WriteLine($"Add: {Add("-123456789999999999999999", "1")}");            
             Console.WriteLine($"Subtract: {Subtract("-10000", "1")}"); 
             Console.WriteLine($"Multiply: {Multiply("-123", "456")}"); 
         }

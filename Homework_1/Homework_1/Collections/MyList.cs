@@ -35,13 +35,20 @@ public class MyList
         {
             Resize();
         }
+
+        // _items[_count++] = item;
         _items[_count] = item;
         _count++;
     }
 
-    public void AddRange(int[] items)
+    public void AddRange(int[]? items)
     {
-        if (items == null) return;
+        if (items == null)
+        {
+            throw new ArgumentNullException(nameof(items), "Can't add empty list");
+        }
+
+        ;
         foreach (int item in items)
         {
             Add(item);
