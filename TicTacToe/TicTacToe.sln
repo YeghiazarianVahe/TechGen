@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuLib", "MenuLib\MenuLib.csproj", "{F059E9BB-DDB4-4863-8C5C-41B5AB020013}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe", "TicTacToe\TicTacToe.csproj", "{EABC34BF-DBDD-40AD-80FD-B4691BAECDCF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F059E9BB-DDB4-4863-8C5C-41B5AB020013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F059E9BB-DDB4-4863-8C5C-41B5AB020013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F059E9BB-DDB4-4863-8C5C-41B5AB020013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F059E9BB-DDB4-4863-8C5C-41B5AB020013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EABC34BF-DBDD-40AD-80FD-B4691BAECDCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EABC34BF-DBDD-40AD-80FD-B4691BAECDCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EABC34BF-DBDD-40AD-80FD-B4691BAECDCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EABC34BF-DBDD-40AD-80FD-B4691BAECDCF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
