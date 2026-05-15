@@ -10,7 +10,7 @@ public class NavigationManager
 
     public void GoTo(IScreen screen)
     {
-        if (_historyIndex >= _history.Length) return;
+        if (_historyIndex >= _history.Length - 1) return;
         _historyIndex++;
         _history[_historyIndex] = _currentScreen;
         _currentScreen = screen;

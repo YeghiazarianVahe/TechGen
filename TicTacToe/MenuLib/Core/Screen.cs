@@ -13,6 +13,7 @@ public abstract class Screen : IScreen
         }
     }
 
+    public virtual bool HandlesOwnInput => false;
     public abstract void Render();
 
     public abstract void HandleInput(ConsoleKeyInfo key);

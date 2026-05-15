@@ -1,59 +1,44 @@
 ﻿using MenuLib.Core;
 using MenuLib.Navigation;
+using TicTacToe.Screens;
 
-namespace MenuLib;
+namespace TicTacToe;
 
 public class Program
 {
     public static void Main(string[] args)
     {
         Renderer renderer = new Renderer();
-        InputReader input =  new InputReader();
+        InputReader inputReader = new InputReader();
         NavigationManager navigation = new NavigationManager();
-        MenuItem[] items = new MenuItem[]
+        AppState appState = new AppState();
+
+        AboutScreen aboutScreen = new AboutScreen(renderer, navigation, appState);
+        SettingsScreen settingsScreen = new SettingsScreen(appState, navigation, renderer);
+        
+        MenuItem[] mainMenuItems = new MenuItem[]
         {
-            new MenuItem("Say Hello", new SayHelloCommand()),
-            new  MenuItem("Settings", new OpenSettings()),
-            new MenuItem("Quit", new QuitCommand())
+            new MenuItem("Play",     new NavigateCommand(navigation, aboutScreen)),
+            new MenuItem("Settings", new NavigateCommand(navigation, settingsScreen)),
+            new MenuItem("About",    new NavigateCommand(navigation, aboutScreen)),
+            new MenuItem("Quit",     new ExitCommand())
         };
 
-        MenuScreen menu = new MenuScreen("Menu", items, renderer, navigation);
-        navigation.GoTo(menu);
+        MenuScreen mainMenu = new MenuScreen("Main Menu", mainMenuItems, renderer, navigation);
+        
+        UsernameScreen usernameScreen = new UsernameScreen(renderer, navigation, appState);
+        usernameScreen.SetNextScreen(mainMenu);
+        
+        navigation.GoTo(usernameScreen);
+
         while (true)
         {
             navigation.CurrentScreen.Render();
-            ConsoleKeyInfo key = input.ReadKey();
-            navigation.CurrentScreen.HandleInput(key);
+            if (!navigation.CurrentScreen.HandlesOwnInput)
+            {
+                ConsoleKeyInfo key = inputReader.ReadKey();
+                navigation.CurrentScreen.HandleInput(key);
+            }
         }
-    }
-}
-
-class SayHelloCommand : ICommand
-{
-    public void Execute()
-    {
-        Console.Clear();
-        Console.WriteLine("Hello World!");
-        Console.ReadKey(true);  
-    }
-}
-
-class QuitCommand : ICommand
-{
-    public void Execute()
-    {
-        Console.Clear();
-        Console.WriteLine("Bye!");
-        Environment.Exit(0);
-    }
-}
-
-class OpenSettings : ICommand
-{
-    public void Execute()
-    {
-        Console.Clear();
-        Console.WriteLine("Open Settings");
-        Console.ReadKey(true);
     }
 }

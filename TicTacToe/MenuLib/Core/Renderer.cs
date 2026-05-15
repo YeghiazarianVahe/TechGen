@@ -16,7 +16,7 @@ public class Renderer
     public void DrawAt(int x, int y, string text)
     {
         Console.SetCursorPosition(x, y);
-        Console.WriteLine(text);
+        Console.Write(text);
     }
 
     public void Highlight(string text)
