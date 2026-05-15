@@ -18,16 +18,19 @@ public class Board
 
     public bool IsEmpty(int row, int col)
     {
+        if (!IsInside(row, col)) return false;
         return _cells[row, col].IsEmpty;
     }
 
     public void PlaceSymbol(int row, int col, CellState symbol)
     {
+        if (!IsInside(row, col)) return;
         _cells[row, col].State = symbol;
     }
 
     public CellState GetCell(int row, int col)
     {
+        if (!IsInside(row, col)) return CellState.Empty;
         return _cells[row, col].State;
     }
 
@@ -40,5 +43,10 @@ public class Board
                 PlaceSymbol(i, j, CellState.Empty);
             }
         }
+    }
+
+    private bool IsInside(int row, int col)
+    {
+        return row >= 0 && row < 3 && col >= 0 && col < 3;
     }
 }

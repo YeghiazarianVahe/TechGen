@@ -28,15 +28,19 @@ public class MenuScreen : Screen
     public override void Render()
     {
         _renderer.Clear();
-        _renderer.DrawText(Title);
+        _renderer.DrawHeader(Title);
+        _renderer.DrawMuted("Use Up/Down or W/S. Press Enter to select.");
         _renderer.DrawText("");
         
         for (int i = 0; i < _menuItems.Length; i++)
         {
+            string prefix = (i + 1) + ". ";
+            string label = prefix + _menuItems[i].Label;
+
             if (i == _selectedIndex)
-                _renderer.Highlight(_menuItems[i].Label);
+                _renderer.Highlight(">> " + label + " <<");
             else
-                _renderer.DrawText(_menuItems[i].Label);
+                _renderer.DrawText("  " + label);
         }
     }
 

@@ -15,16 +15,30 @@ public class Program
 
         AboutScreen aboutScreen = new AboutScreen(renderer, navigation, appState);
         SettingsScreen settingsScreen = new SettingsScreen(appState, navigation, renderer);
+        ComingSoonScreen comingSoonScreen = new ComingSoonScreen(renderer, navigation);
+        GameScreen gameScreen = new GameScreen(appState, navigation, renderer);
+        SymbolSelectionScreen symbolSelectionScreen = new SymbolSelectionScreen(
+            appState,
+            navigation,
+            renderer,
+            gameScreen);
+        PlayMenuScreen playMenuScreen = new PlayMenuScreen(
+            appState,
+            navigation,
+            renderer,
+            symbolSelectionScreen,
+            comingSoonScreen);
         
         MenuItem[] mainMenuItems = new MenuItem[]
         {
-            new MenuItem("Play",     new NavigateCommand(navigation, aboutScreen)),
+            new MenuItem("Play",     new NavigateCommand(navigation, playMenuScreen)),
             new MenuItem("Settings", new NavigateCommand(navigation, settingsScreen)),
             new MenuItem("About",    new NavigateCommand(navigation, aboutScreen)),
             new MenuItem("Quit",     new ExitCommand())
         };
 
         MenuScreen mainMenu = new MenuScreen("Main Menu", mainMenuItems, renderer, navigation);
+        gameScreen.SetMainMenu(mainMenu);
         
         UsernameScreen usernameScreen = new UsernameScreen(renderer, navigation, appState);
         usernameScreen.SetNextScreen(mainMenu);
@@ -33,11 +47,12 @@ public class Program
 
         while (true)
         {
-            navigation.CurrentScreen.Render();
-            if (!navigation.CurrentScreen.HandlesOwnInput)
+            IScreen currentScreen = navigation.CurrentScreen;
+            currentScreen.Render();
+            if (!currentScreen.HandlesOwnInput)
             {
                 ConsoleKeyInfo key = inputReader.ReadKey();
-                navigation.CurrentScreen.HandleInput(key);
+                currentScreen.HandleInput(key);
             }
         }
     }

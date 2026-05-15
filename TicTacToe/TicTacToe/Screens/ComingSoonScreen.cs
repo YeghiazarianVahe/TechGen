@@ -1,32 +1,27 @@
-﻿using MenuLib.Core;
+using MenuLib.Core;
 using MenuLib.Navigation;
 
 namespace TicTacToe.Screens;
 
-public class AboutScreen : Screen
+public class ComingSoonScreen : Screen
 {
     private readonly Renderer _renderer;
     private readonly NavigationManager _navigation;
-    private readonly AppState _appState;
 
     public override bool HandlesOwnInput => true;
-    
-    public AboutScreen(
-        Renderer renderer,
-        NavigationManager navigation,
-        AppState appState)
+
+    public ComingSoonScreen(Renderer renderer, NavigationManager navigation)
     {
         _renderer = renderer;
         _navigation = navigation;
-        _appState = appState;
     }
+
     public override void Render()
     {
         _renderer.Clear();
-        _renderer.DrawHeader("About");
-        _renderer.DrawLabelValue("Player: ", _appState.Username);
-        _renderer.DrawLabelValue("Project: ", "TechGen C# TicTacToe Console Application");
-        _renderer.DrawLabelValue("Date: ", "May 2026");
+        _renderer.DrawHeader("Player vs Computer");
+        _renderer.DrawSection("Coming soon");
+        _renderer.DrawMuted("This game mode is not available yet.");
         _renderer.DrawFooter("[Enter] Back   [Backspace] Back   [ESC] Quit");
 
         while (true)

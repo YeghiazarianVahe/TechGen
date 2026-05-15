@@ -11,23 +11,27 @@ public class GameEngine
     {
         _board = new Board();
         _checker = new WinnerChecker();
+        _player = new Player[]
+        {
+            new Player("Player 1", CellState.X, PlayerType.Human),
+            new Player("Player 2", CellState.O, PlayerType.Human)
+        };
     }
 
-    public Player CurrentPlayer => 
-        _player != null ? _player[_currentPlayerIndex] : null;    
+    public Player CurrentPlayer => _player[_currentPlayerIndex];    
     
     public Board Board => _board;
     
     public void StartGame(Player player1, Player player2)
     {
-        _player = new[] { player1, player2 };
+        _player = new Player[] { player1, player2 };
         _board.Reset();
         _currentPlayerIndex = 0;
     }
 
     public bool TryPlaceSymbol(int row, int col)
     {
-        if (_board.GetCell(row, col) == CellState.Empty)
+        if (_board.IsEmpty(row, col))
         {
             _board.PlaceSymbol(row, col, CurrentPlayer.Symbol);
             return true;

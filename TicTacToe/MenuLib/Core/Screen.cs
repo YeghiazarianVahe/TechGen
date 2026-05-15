@@ -2,7 +2,7 @@
 
 public abstract class Screen : IScreen
 {
-    private string _title;
+    private string _title = "";
 
     public string Title
     {

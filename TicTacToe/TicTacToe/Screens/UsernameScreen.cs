@@ -8,7 +8,7 @@ public class UsernameScreen : Screen
    private readonly Renderer _renderer;
    private readonly NavigationManager _navigation;
    private readonly AppState _appState;
-   private IScreen _nextScreen;
+   private IScreen _nextScreen = null!;
    private bool _done = false; 
    
    public override bool HandlesOwnInput => true;
@@ -32,10 +32,13 @@ public class UsernameScreen : Screen
    public override void Render()
    {
        if (_done) return;
-       Console.Clear();
-       _renderer.DrawText("Tic Tac Toe");
+       _renderer.Clear();
+       _renderer.DrawHeader("Tic Tac Toe");
+       _renderer.DrawSection("Welcome");
+       _renderer.DrawMuted("Choose the name shown in the game screens.");
+       _renderer.DrawText("");
        Console.Write("Enter your username: ");
-       string?  username = Console.ReadLine();
+       string? username = Console.ReadLine();
        if (string.IsNullOrEmpty(username))
        {
            username = "Player";
@@ -43,12 +46,14 @@ public class UsernameScreen : Screen
        
        _appState.Username = username;
        _done = true;
-       _navigation.GoTo(_nextScreen);
+       if (_nextScreen != null)
+       {
+           _navigation.Replace(_nextScreen);
+       }
        
    }
 
    public override void HandleInput(ConsoleKeyInfo key)
    {
-       // Not used — input handled in Render via Console.ReadLine
    }
 }

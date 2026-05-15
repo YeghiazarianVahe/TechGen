@@ -2,6 +2,5 @@
 
 public enum GameMode
 {
-    PlayerVsPlayer,
-    PlayerVsComputer
+    PlayerVsPlayer
 }
