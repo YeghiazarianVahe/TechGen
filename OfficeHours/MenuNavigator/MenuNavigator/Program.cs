@@ -13,10 +13,12 @@ static class Program
         navigationController.AddWindow(new LoginSsnWindow(navigationController));
         navigationController.AddWindow(new IndividualPersonWindow(navigationController));
         navigationController.AddWindow(new AboutWindow(navigationController));
+        InputController input = new InputController();
         
         navigationController.GoToWindow<MainMenuWindow>();
         
-        MenuController controller = new MenuController(navigationController);
-        controller.Run();
+        MenuController controller = new MenuController(navigationController, input);
+        
+        controller.Start();
     }
 }
