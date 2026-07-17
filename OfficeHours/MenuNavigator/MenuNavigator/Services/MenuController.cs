@@ -26,7 +26,7 @@ public class MenuController
         CloseApp();
     }
 
-    private void CloseApp()
+    private static void CloseApp()
     {
         Console.Clear();
         Console.WriteLine("Good bye! :)");
@@ -59,10 +59,6 @@ public class MenuController
 
     private BaseWindow GetCurrentWindow()
     {
-        if (_navigator.CurrentWindow == null)
-        {
-            throw new Exception("Current  window is null");
-        }
-        return _navigator.CurrentWindow;
+        return _navigator.CurrentWindow ?? throw new Exception("Current  window is null");
     }
 }

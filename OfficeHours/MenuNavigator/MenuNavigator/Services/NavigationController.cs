@@ -6,6 +6,7 @@ namespace MenuNavigator.Services;
 public class NavigationController
 {
     private readonly List<BaseWindow> _windows = new List<BaseWindow>();
+    
     private BaseWindow? _currentWindow;
     private BaseWindow? _previousWindow;
     private BaseWindow? _nextWindow;

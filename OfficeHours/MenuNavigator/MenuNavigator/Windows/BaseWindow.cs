@@ -5,13 +5,10 @@ namespace MenuNavigator.Windows;
 
 public abstract class BaseWindow : IRenderable
 {
-    private string _title;
-    private List<MenuItem> _menuItems;
-    private int _selectedIndex;
-    
-    protected string Title { get; }
+  protected string Title { get; }
     protected List<MenuItem> MenuItems { get; }
     protected int SelectedIndex { get; set; }
+    
 
     protected BaseWindow(string title, List<MenuItem> menuItems)
     {
@@ -45,6 +42,7 @@ public abstract class BaseWindow : IRenderable
 
     public virtual void Render()
     {
+        Console.Clear();
         PrintHeader();
         for (int i = 0; i < MenuItems.Count; i++)
         {
