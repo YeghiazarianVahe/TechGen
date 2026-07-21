@@ -6,7 +6,7 @@ namespace MenuNavigator.Windows;
 public class LoginSsnWindow : BaseWindow
 {
     public LoginSsnWindow(NavigationController navigate) : base("Login via SSN", [
-        new MenuItem("Ender detail information", () => { }),
+        new MenuItem("Ender detail information", navigate.GoToWindow<CalendarWindow>),
         new MenuItem("Show my current registrations", () => { })
     ])
     {
